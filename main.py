@@ -150,6 +150,8 @@ def tip():
   res = conn.getresponse()
   data = res.read()
   data = json.loads(data)
+  pop = data["newslist"][0]["pop"]
+  tips = data["newslist"][0]["tips"]
   return pop,tips
 
 
@@ -160,7 +162,7 @@ if __name__ == "__main__":
   # 彩虹屁
   pipi = caihongpi()
   #下雨概率和建议
-  #pop,tips = tip()
+  pop,tips = tip()
   # 早安语言
   zaoan = zaoan()
   
@@ -197,14 +199,14 @@ if __name__ == "__main__":
               "value": zaoan,
               "color": get_color()
           },
-#           "pop": {
-#               "value": pop,
-#               "color": get_color()
-#           },
-#           "tips": {
-#               "value": tips,
-#               "color": get_color()
-#           }
+          "pop": {
+              "value": pop,
+              "color": get_color()
+          },
+          "tips": {
+              "value": tips,
+              "color": get_color()
+          }
   }
   res = wm.send_template(user_id, template_id, data)
 
