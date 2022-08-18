@@ -1,4 +1,5 @@
 from datetime import date, datetime
+from time import time, localtime
 import math
 from wechatpy import WeChatClient
 from wechatpy.client.api import WeChatMessage, WeChatTemplate
@@ -8,7 +9,15 @@ import random
 import http.client, urllib
 import json
 
-today = datetime.now()
+# today = datetime.now()
+
+week_list = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"]
+year = localtime().tm_year
+month = localtime().tm_mon
+day = localtime().tm_mday
+today = datetime.date(datetime(year=year, month=month, day=day))
+week = week_list[today.isoweekday() % 7]
+
 city = os.environ['CITY']
 #province = os.environ['PROVINCE']
 birthday = os.environ['BIRTHDAY']
