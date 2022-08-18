@@ -239,7 +239,6 @@ def tip():
 
 if __name__ == "__main__":
   # 传入省份和市获取天气信息
-  province, city = province, city
   weather, max_temperature, min_temperature = get_weather(province, city)
   # 彩虹屁
   pipi = caihongpi()
