@@ -174,7 +174,7 @@ if __name__ == "__main__":
               "color": get_color()
           },
           "city": {
-              "value": city_name,
+              "value": city,
               "color": get_color()
           },
 #           "weather": {
