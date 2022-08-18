@@ -42,24 +42,6 @@ def get_color():
   return random.choice(color_list)
 
 
-def get_birthday(birthday, year, today):
-  # 获取生日的月和日
-  birthday_month = int(birthday.split("-")[1])
-  birthday_day = int(birthday.split("-")[2])
-  # 今年生日
-  year_date = date(year, birthday_month, birthday_day)
-  # 计算生日年份，如果还没过，按当年减，如果过了需要+1
-  if today > year_date:
-      birth_date = date((year + 1), birthday_month, birthday_day)
-      birth_day = str(birth_date.__sub__(today)).split(" ")[0]
-  elif today == year_date:
-      birth_day = 0
-  else:
-      birth_date = year_date
-      birth_day = str(birth_date.__sub__(today)).split(" ")[0]
-  return birth_day
-
-
 #彩虹屁
 def caihongpi():
   conn = http.client.HTTPSConnection('api.tianapi.com')  #接口域名
@@ -100,7 +82,7 @@ def tip():
   min_temperature = data["newslist"][0]["lowest"]
   pop = data["newslist"][0]["pop"]
   tips = data["newslist"][0]["tips"]
-  return pop,tips
+  return weather,max_temperature,min_temperature,pop,tips
 
 
 
@@ -109,7 +91,7 @@ if __name__ == "__main__":
   pipi = caihongpi()
   #下雨概率和建议
   weather,max_temperature,min_temperature,pop,tips = tip()
-  # 早安语言
+  # 早安语
   zaoan = zaoan()
   
   
