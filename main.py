@@ -54,36 +54,36 @@ def get_color():
   color_list = get_colors(100)
   return random.choice(color_list)
 
-def get_weather(province, city):
-  # 城市id
-  try:
-      city_id = cityinfo.cityInfo[province][city]["AREAID"]
-  except KeyError:
-      print("推送消息失败，请检查省份或城市是否正确")
-      os.system("pause")
-      sys.exit(1)
-  # city_id = 101280101
-  # 毫秒级时间戳
-  t = (int(round(time() * 1000)))
-  headers = {
-      "Referer": "http://www.weather.com.cn/weather1d/{}.shtml".format(city_id),
-      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
-                    'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36'
-  }
-  url = "http://d1.weather.com.cn/dingzhi/{}.html?_={}".format(city_id, t)
-  response = get(url, headers=headers)
-  response.encoding = "utf-8"
-  response_data = response.text.split(";")[0].split("=")[-1]
-  response_json = eval(response_data)
-  # print(response_json)
-  weatherinfo = response_json["weatherinfo"]
-  # 天气
-  weather = weatherinfo["weather"]
-  # 最高气温
-  temp = weatherinfo["temp"]
-  # 最低气温
-  tempn = weatherinfo["tempn"]
-  return weather, temp, tempn
+# def get_weather(province, city):
+#   # 城市id
+#   try:
+#       city_id = cityinfo.cityInfo[province][city]["AREAID"]
+#   except KeyError:
+#       print("推送消息失败，请检查省份或城市是否正确")
+#       os.system("pause")
+#       sys.exit(1)
+#   # city_id = 101280101
+#   # 毫秒级时间戳
+#   t = (int(round(time() * 1000)))
+#   headers = {
+#       "Referer": "http://www.weather.com.cn/weather1d/{}.shtml".format(city_id),
+#       'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
+#                     'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36'
+#   }
+#   url = "http://d1.weather.com.cn/dingzhi/{}.html?_={}".format(city_id, t)
+#   response = get(url, headers=headers)
+#   response.encoding = "utf-8"
+#   response_data = response.text.split(";")[0].split("=")[-1]
+#   response_json = eval(response_data)
+#   # print(response_json)
+#   weatherinfo = response_json["weatherinfo"]
+#   # 天气
+#   weather = weatherinfo["weather"]
+#   # 最高气温
+#   temp = weatherinfo["temp"]
+#   # 最低气温
+#   tempn = weatherinfo["tempn"]
+#   return weather, temp, tempn
 
 
 def get_birthday(birthday, year, today):
@@ -239,7 +239,7 @@ def tip():
 
 if __name__ == "__main__":
   # 传入省份和市获取天气信息
-  weather, max_temperature, min_temperature = get_weather(province, city)
+  #weather, max_temperature, min_temperature = get_weather(province, city)
   # 彩虹屁
   pipi = caihongpi()
   #下雨概率和建议
@@ -260,18 +260,18 @@ if __name__ == "__main__":
               "value": city_name,
               "color": get_color()
           },
-          "weather": {
-              "value": weather,
-              "color": get_color()
-          },
-          "min_temperature": {
-              "value": min_temperature,
-              "color": get_color()
-          },
-          "max_temperature": {
-              "value": max_temperature,
-              "color": get_color()
-          },
+#           "weather": {
+#               "value": weather,
+#               "color": get_color()
+#           },
+#           "min_temperature": {
+#               "value": min_temperature,
+#               "color": get_color()
+#           },
+#           "max_temperature": {
+#               "value": max_temperature,
+#               "color": get_color()
+#           },
           "pipi": {
               "value": pipi,
               "color": get_color()
