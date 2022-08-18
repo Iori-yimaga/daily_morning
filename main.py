@@ -143,100 +143,6 @@ def tip():
   data = json.loads(data)
   return pop,tips
 
-#推送信息
-# def send_message(to_user, access_token, city_name, weather, max_temperature, min_temperature, pipi, zaoan, pop, tip):
-#   url = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token={}".format(access_token)
-#   week_list = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"]
-#   year = localtime().tm_year
-#   month = localtime().tm_mon
-#   day = localtime().tm_mday
-#   today = datetime.date(datetime(year=year, month=month, day=day))
-#   week = week_list[today.isoweekday() % 7]
-#   # 获取在一起的日子的日期格式
-#   love_year = int(config["love_date"].split("-")[0])
-#   love_month = int(config["love_date"].split("-")[1])
-#   love_day = int(config["love_date"].split("-")[2])
-#   love_date = date(love_year, love_month, love_day)
-#   # 获取在一起的日期差
-#   love_days = str(today.__sub__(love_date)).split(" ")[0]
-#   # 获取所有生日数据
-#   birthdays = {}
-#   for k, v in config.items():
-#       if k[0:5] == "birth":
-#           birthdays[k] = v
-#   data = {
-#       "touser": to_user,
-#       "template_id": template_id,
-#       "url": "http://weixin.qq.com/download",
-#       "topcolor": "#FF0000",
-#       "data": {
-#           "date": {
-#               "value": "{} {}".format(today, week),
-#               "color": get_color()
-#           },
-#           "city": {
-#               "value": city_name,
-#               "color": get_color()
-#           },
-#           "weather": {
-#               "value": weather,
-#               "color": get_color()
-#           },
-#           "min_temperature": {
-#               "value": min_temperature,
-#               "color": get_color()
-#           },
-#           "max_temperature": {
-#               "value": max_temperature,
-#               "color": get_color()
-#           },
-#           "love_day": {
-#               "value": love_days,
-#               "color": get_color()
-#           },
-#           "pipi": {
-#               "value": pipi,
-#               "color": get_color()
-#           },
-#           "lizhi": {
-#               "value": lizhi,
-#               "color": get_color()
-#           },
-#           "zaoan": {
-#               "value": zaoan,
-#               "color": get_color()
-#           },
-#           "pop": {
-#               "value": pop,
-#               "color": get_color()
-#           },
-#           "tips": {
-#               "value": tips,
-#               "color": get_color()
-#           }
-#       }
-#   }
-#   for key, value in birthdays.items():
-#     # 获取距离下次生日的时间
-#     birth_day = get_birthday(value, year, today)
-#     # 将生日数据插入data
-#     data["data"][key] = {"value": birth_day, "color": get_color()}
-#     headers = {
-#       'Content-Type': 'application/json',
-#       'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
-#                     'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36'
-#     }
-#     response = post(url, headers=headers, json=data).json()
-#     if response["errcode"] == 40037:
-#       print("推送消息失败，请检查模板id是否正确")
-#     elif response["errcode"] == 40036:
-#       print("推送消息失败，请检查模板id是否为空")
-#     elif response["errcode"] == 40003:
-#       print("推送消息失败，请检查微信号是否正确")
-#     elif response["errcode"] == 0:
-#       print("推送消息成功")
-#     else:
-#       print(response)
 
 
 if __name__ == "__main__":
@@ -245,7 +151,7 @@ if __name__ == "__main__":
   # 彩虹屁
   pipi = caihongpi()
   #下雨概率和建议
-  pop,tips = tip()
+  #pop,tips = tip()
   # 早安语言
   zaoan = zaoan()
   
@@ -282,14 +188,14 @@ if __name__ == "__main__":
               "value": zaoan,
               "color": get_color()
           },
-          "pop": {
-              "value": pop,
-              "color": get_color()
-          },
-          "tips": {
-              "value": tips,
-              "color": get_color()
-          }
+#           "pop": {
+#               "value": pop,
+#               "color": get_color()
+#           },
+#           "tips": {
+#               "value": tips,
+#               "color": get_color()
+#           }
   }
   res = wm.send_template(user_id, template_id, data)
 
