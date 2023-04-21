@@ -71,7 +71,7 @@ def zaoan():
 #下雨概率和建议
 def tip():
   conn = http.client.HTTPSConnection('api.tianapi.com')  #接口域名
-  params = urllib.parse.urlencode({'key':'3b17bbea47c5a5820ba27904a77a1ebc','city':'荆门市'})
+  params = urllib.parse.urlencode({'key':'fdc3e6be7896630d3c332a8c91ed16a2','city':'濮阳市'})
   headers = {'Content-type':'application/x-www-form-urlencoded'}
   conn.request('POST','/tianqi/index',params,headers)
   res = conn.getresponse()
