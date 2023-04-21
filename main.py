@@ -45,7 +45,7 @@ def get_color():
 #彩虹屁
 def caihongpi():
   conn = http.client.HTTPSConnection('api.tianapi.com')  #接口域名
-  params = urllib.parse.urlencode({'key':'3b17bbea47c5a5820ba27904a77a1ebc'})
+  params = urllib.parse.urlencode({'key':'fdc3e6be7896630d3c332a8c91ed16a2'})
   headers = {'Content-type':'application/x-www-form-urlencoded'}
   conn.request('POST','/caihongpi/index',params,headers)
   res = conn.getresponse()
@@ -53,14 +53,14 @@ def caihongpi():
   data = json.loads(data)
   data = data["newslist"][0]["content"]
   if("XXX" in data):
-      data.replace("XXX","宝宝")
+      data.replace("XXX","乖乖")
   return data
 
 
 # 早安语
 def zaoan():
   conn = http.client.HTTPSConnection('api.tianapi.com')  #接口域名
-  params = urllib.parse.urlencode({'key':'3b17bbea47c5a5820ba27904a77a1ebc'})
+  params = urllib.parse.urlencode({'key':'fdc3e6be7896630d3c332a8c91ed16a2'})
   headers = {'Content-type':'application/x-www-form-urlencoded'}
   conn.request('POST','/zaoan/index',params,headers)
   res = conn.getresponse()
@@ -80,9 +80,8 @@ def tip():
   weather = data["newslist"][0]["weather"]
   max_temperature = data["newslist"][0]["highest"]
   min_temperature = data["newslist"][0]["lowest"]
-  pop = data["newslist"][0]["pop"]
   tips = data["newslist"][0]["tips"]
-  return weather,max_temperature,min_temperature,pop,tips
+  return weather,max_temperature,min_temperature,tips
 
 
 
