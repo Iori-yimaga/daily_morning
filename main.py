@@ -89,7 +89,7 @@ if __name__ == "__main__":
   # 彩虹屁
   pipi = caihongpi()
   #下雨概率和建议
-  weather,max_temperature,min_temperature,pop,tips = tip()
+  weather,max_temperature,min_temperature,tips = tip()
   # 早安语
   zaoan = zaoan()
   
@@ -124,10 +124,6 @@ if __name__ == "__main__":
           },
           "zaoan": {
               "value": zaoan,
-              "color": get_color()
-          },
-          "pop": {
-              "value": pop,
               "color": get_color()
           },
           "tips": {
